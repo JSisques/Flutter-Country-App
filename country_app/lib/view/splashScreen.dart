@@ -15,7 +15,7 @@ class SplashScreenState extends State<SplashScreen>{
   @override
   void initState(){
     super.initState();
-    timer = Timer(Duration(seconds: 5), showLogin);
+    timer = Timer(Duration(seconds: 2), showLogin);
   }
 
   @override
@@ -26,7 +26,8 @@ class SplashScreenState extends State<SplashScreen>{
 
   void showLogin(){
     if (mounted){
-      Navigator.of(context).pushReplacement(HomeScreen.route());
+      //Navigator.of(context).pushReplacement(HomeScreen.route());
+      Navigator.pushReplacement(context, HomeScreen.route());
     }
   }
 
@@ -34,21 +35,12 @@ class SplashScreenState extends State<SplashScreen>{
   Widget build(BuildContext context){
     return Material(
       color: Colors.blue[900],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(128),
-            child: Image.network(
-            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-    ),
-),
-          CircularProgressIndicator(
+      child: Center(
+         child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             strokeWidth: 2,
           ),
-        ],
-      ),
+      )
     );
   }
 }
